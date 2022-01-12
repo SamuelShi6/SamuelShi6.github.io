@@ -1,0 +1,320 @@
+```python
+import pandas as pd
+url = "https://raw.githubusercontent.com/PhilChodrow/PIC16B/master/datasets/palmer_penguins.csv"
+penguins = pd.read_csv(url)
+```
+
+First, we can take a close look at the dataframe `penguins`:
+
+
+```python
+penguins
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>studyName</th>
+      <th>Sample Number</th>
+      <th>Species</th>
+      <th>Region</th>
+      <th>Island</th>
+      <th>Stage</th>
+      <th>Individual ID</th>
+      <th>Clutch Completion</th>
+      <th>Date Egg</th>
+      <th>Culmen Length (mm)</th>
+      <th>Culmen Depth (mm)</th>
+      <th>Flipper Length (mm)</th>
+      <th>Body Mass (g)</th>
+      <th>Sex</th>
+      <th>Delta 15 N (o/oo)</th>
+      <th>Delta 13 C (o/oo)</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>PAL0708</td>
+      <td>1</td>
+      <td>Adelie Penguin (Pygoscelis adeliae)</td>
+      <td>Anvers</td>
+      <td>Torgersen</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N1A1</td>
+      <td>Yes</td>
+      <td>11/11/07</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+      <td>MALE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Not enough blood for isotopes.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PAL0708</td>
+      <td>2</td>
+      <td>Adelie Penguin (Pygoscelis adeliae)</td>
+      <td>Anvers</td>
+      <td>Torgersen</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N1A2</td>
+      <td>Yes</td>
+      <td>11/11/07</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+      <td>FEMALE</td>
+      <td>8.94956</td>
+      <td>-24.69454</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PAL0708</td>
+      <td>3</td>
+      <td>Adelie Penguin (Pygoscelis adeliae)</td>
+      <td>Anvers</td>
+      <td>Torgersen</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N2A1</td>
+      <td>Yes</td>
+      <td>11/16/07</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+      <td>FEMALE</td>
+      <td>8.36821</td>
+      <td>-25.33302</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PAL0708</td>
+      <td>4</td>
+      <td>Adelie Penguin (Pygoscelis adeliae)</td>
+      <td>Anvers</td>
+      <td>Torgersen</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N2A2</td>
+      <td>Yes</td>
+      <td>11/16/07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Adult not sampled.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PAL0708</td>
+      <td>5</td>
+      <td>Adelie Penguin (Pygoscelis adeliae)</td>
+      <td>Anvers</td>
+      <td>Torgersen</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N3A1</td>
+      <td>Yes</td>
+      <td>11/16/07</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+      <td>FEMALE</td>
+      <td>8.76651</td>
+      <td>-25.32426</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>PAL0910</td>
+      <td>120</td>
+      <td>Gentoo penguin (Pygoscelis papua)</td>
+      <td>Anvers</td>
+      <td>Biscoe</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N38A2</td>
+      <td>No</td>
+      <td>12/1/09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>PAL0910</td>
+      <td>121</td>
+      <td>Gentoo penguin (Pygoscelis papua)</td>
+      <td>Anvers</td>
+      <td>Biscoe</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N39A1</td>
+      <td>Yes</td>
+      <td>11/22/09</td>
+      <td>46.8</td>
+      <td>14.3</td>
+      <td>215.0</td>
+      <td>4850.0</td>
+      <td>FEMALE</td>
+      <td>8.41151</td>
+      <td>-26.13832</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>PAL0910</td>
+      <td>122</td>
+      <td>Gentoo penguin (Pygoscelis papua)</td>
+      <td>Anvers</td>
+      <td>Biscoe</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N39A2</td>
+      <td>Yes</td>
+      <td>11/22/09</td>
+      <td>50.4</td>
+      <td>15.7</td>
+      <td>222.0</td>
+      <td>5750.0</td>
+      <td>MALE</td>
+      <td>8.30166</td>
+      <td>-26.04117</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>342</th>
+      <td>PAL0910</td>
+      <td>123</td>
+      <td>Gentoo penguin (Pygoscelis papua)</td>
+      <td>Anvers</td>
+      <td>Biscoe</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N43A1</td>
+      <td>Yes</td>
+      <td>11/22/09</td>
+      <td>45.2</td>
+      <td>14.8</td>
+      <td>212.0</td>
+      <td>5200.0</td>
+      <td>FEMALE</td>
+      <td>8.24246</td>
+      <td>-26.11969</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>343</th>
+      <td>PAL0910</td>
+      <td>124</td>
+      <td>Gentoo penguin (Pygoscelis papua)</td>
+      <td>Anvers</td>
+      <td>Biscoe</td>
+      <td>Adult, 1 Egg Stage</td>
+      <td>N43A2</td>
+      <td>Yes</td>
+      <td>11/22/09</td>
+      <td>49.9</td>
+      <td>16.1</td>
+      <td>213.0</td>
+      <td>5400.0</td>
+      <td>MALE</td>
+      <td>8.36390</td>
+      <td>-26.15531</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>344 rows × 17 columns</p>
+</div>
+
+
+
+Next, we are going to construct a graph based on the data set.
+<br><br>
+Here's what we are going to do: we are going to plot Culmen Length (mm) against Culmen Depth (mm) for each of the datapoint. 
+<br>
+
+
+
+
+```python
+from matplotlib import pyplot as plt
+
+fig, ax = plt.subplots(1, 1)
+ax.scatter(penguins["Culmen Length (mm)"], 
+           penguins["Culmen Depth (mm)"])
+
+ax.set(xlabel = "Culmen Length (mm)",
+       ylabel = "Culmen Depth (mm)",
+       title = "Culmen Length against Culmen Depth")
+```
+
+
+
+
+    [Text(0.5, 0, 'Culmen Length (mm)'),
+     Text(0, 0.5, 'Culmen Depth (mm)'),
+     Text(0.5, 1.0, 'Culmen Length against Culmen Depth')]
+
+
+
+
+    
+![png](Blog%20Post%200_files/Blog%20Post%200_4_1.png)
+    
+
+
+
+```python
+
+```
